@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --color-base: rgb(var(--theme-base));
+  --color-surface: rgb(var(--theme-surface));
+  --color-surface-light: rgb(var(--theme-surface-light));
+
+  --color-text: rgb(var(--theme-text));
+  --color-muted: rgb(var(--theme-muted));
+
+  --color-accent: rgb(var(--theme-accent));
+  --color-accent-hover: rgb(var(--theme-accent-hover));
+
+  --color-border: rgb(var(--theme-border));
+
+  --font-body: Inter, sans-serif;
+}
+
+:root {
+  --theme-base: 15 15 18;
+  --theme-surface: 26 26 31;
+  --theme-surface-light: 37 37 44;
+
+  --theme-text: 237 237 237;
+  --theme-muted: 156 163 175;
+
+  --theme-accent: 212 162 76;
+  --theme-accent-hover: 196 145 60;
+
+  --theme-border: 255 255 255;
+}
+
+.light {
+  --theme-base: 245 243 239;
+  --theme-surface: 255 255 255;
+  --theme-surface-light: 239 237 232;
+
+  --theme-text: 26 26 31;
+  --theme-muted: 107 114 128;
+
+  --theme-accent: 184 134 60;
+  --theme-accent-hover: 163 118 50;
+
+  --theme-border: 0 0 0;
+}
+
+body {
+  @apply bg-base text-text font-body transition-colors duration-300;
+}
