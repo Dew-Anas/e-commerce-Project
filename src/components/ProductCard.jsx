@@ -6,16 +6,11 @@ import { WishlistContext } from "../context/WishlistContext";
 
 function ProductCard({ products }) {
   const {
-    id,
-    title,
-    price,
-    thumbnail,
-    brand,
-    category,
-    rating,
-    stock,
-    discountPercentage,
-  } = products;
+    id, title,  thumbnail, images,   stock, discountPercentage
+  } = products
+
+  const displayImage = images && images.length > 0 ? images[0] : thumbnail
+
 
   const { addToCart } = useContext(CartContext);
   const [added, setAdded] = useState(false);
@@ -39,11 +34,12 @@ function ProductCard({ products }) {
   return (
     <div className="bg-surface border border-white/10 rounded-xl overflow-hidden group hover:border-accent/40 transition-all">
       <Link to={`/products/${id}`}>
-        <div className=" relative bg-surfaceLight aspect-square ">
+        <div className="relative bg-[#f5f4f0] aspect-square rounded-t-xl overflow-hidden">
           <img
-            src={thumbnail}
+            src={displayImage}
             alt={title}
-            className="w-full h-full object-contain p-6"
+            loading="lazy"
+            className="w-full h-full object-contain p-8 mix-blend-multiply group-hover:scale-110 transition-transform duration-500"
           />
 
           {discountPercentage > 0 && (
@@ -77,12 +73,8 @@ function ProductCard({ products }) {
 
           <h3 className="text-white text-sm font-medium">{products.title}</h3>
 
-          <span className="text-xs text-muted">{products.brand}</span>
-
-          <div className="flex items-center gap-1 mt-1">
-            <FaStar className="text-accent text-xs" />
-            <span className="text-xs text-muted">{products.rating}</span>
-          </div>
+         
+         
 
           <p className="text-white font-semibold mt-1">${products.price}</p>
 
